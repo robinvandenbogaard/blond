@@ -1,0 +1,27 @@
+swarm:
+  network:
+    socket-binding-groups:
+      standard-sockets:
+        outbound-socket-bindings:
+          remote-activemq-socket-binding:
+            remote-host: 127.0.0.1
+            remote-port: 61616
+  messaging-activemq:
+    servers:
+      default:
+        remote-connectors:
+          remote-activemq-connector:
+            socket-binding: remote-activemq-socket-binding
+        pooled-connection-factories:
+          remote-connection-factory:
+            user: myuser
+            password: otherpassword
+            connectors:
+              - remote-activemq-connector
+            entries:
+              - 'java:/jms/remote-mq'
+              - 'java:/DefaultJMSConnectionFactory'
+        jms-queues:
+          session-tracking-queue:
+            entries:
+              entry: 'java:/jms/queue/testQueue'

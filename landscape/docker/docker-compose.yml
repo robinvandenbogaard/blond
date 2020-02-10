@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  serveicea:
+    image: landscape/service-a
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    networks:
+      - landscapenet
+    # forces thorntail to use project-compose.yml
+    command: -Scompose
+    environment:
+      - injected.value=Composed value
+
+  activemq:
+    image: vromero/activemq-artemis
+    expose:
+      - 61616
+      - 8161
+    ports:
+      - "8161:8161"
+    networks:
+      - landscapenet
+    environment:
+      - ARTEMIS_USERNAME=admin
+      - ARTEMIS_PASSWORD=supers3cret
+
+networks:
+  landscapenet:
