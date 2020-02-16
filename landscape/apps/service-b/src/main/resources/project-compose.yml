@@ -1,0 +1,14 @@
+swarm:
+  network:
+    socket-binding-groups:
+      standard-sockets:
+        outbound-socket-bindings:
+          remote-activemq-socket-binding:
+            remote-host: activemq
+  messaging-activemq:
+    servers:
+      default:
+        pooled-connection-factories:
+          remote-connection-factory:
+            user: admin
+            password: supers3cret

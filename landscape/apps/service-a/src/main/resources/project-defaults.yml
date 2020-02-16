@@ -21,7 +21,3 @@ swarm:
             entries:
               - 'java:/jms/remote-mq'
               - 'java:/DefaultJMSConnectionFactory'
-        jms-queues:
-          session-tracking-queue:
-            entries:
-              entry: 'java:/jms/queue/testQueue'

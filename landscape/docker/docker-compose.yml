@@ -14,6 +14,17 @@ services:
     environment:
       - injected.value=Composed value
 
+  serveiceb:
+    image: landscape/service-b
+    expose:
+      - 8180
+    ports:
+      - "8180:8080"
+    networks:
+      - landscapenet
+    # forces thorntail to use project-compose.yml
+    command: -Scompose
+
   activemq:
     image: vromero/activemq-artemis
     expose:
